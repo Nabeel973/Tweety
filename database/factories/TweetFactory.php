@@ -11,3 +11,6 @@ $factory->define(Tweet::class, function (Faker $faker) {
         'body'=> $faker->sentence,
     ];
 });
+
+
+

@@ -7,15 +7,21 @@ use App\Tweet;
 
 class TweetController extends Controller
 {
-  public function store()
-  {
-    $attributes=request()->validate(['body'=>'required']);
+    public function index()
+    {
+        return view('tweets.index',[
+            'tweets'=> auth()->user()->timeLine()
+        ]);
+    }
+    public function store()
+      {
+        $attributes=request()->validate(['body'=>'required']);
 
-      Tweet::create([
-          'user_id' => auth()->id(),
-          'body'=>$attributes['body'],
+          Tweet::create([
+              'user_id' => auth()->id(),
+              'body'=>$attributes['body'],
 
-      ]);
-      return redirect('/home');
-  }
+          ]);
+          return redirect('/home');
+      }
 }

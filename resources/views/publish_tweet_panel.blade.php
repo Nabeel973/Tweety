@@ -6,20 +6,20 @@
         <hr class="my-4">
 
         <footer class="flex justify-between">
-            
+
             <div class="flex items-center text-sm">
-            <img src="{{auth()->user()->avatar()}}" alt="" 
-                class="rounded-full mr-2"> 
+            <img src="{{auth()->user()->avatar()}}" alt=""
+                class="rounded-full mr-2" height="40px" width="40px">
             </div>
 
-            <button type="submit" 
+            <button type="submit"
             class="bg-blue-400 rounded-lg shadow py-2 px-2">
             Tweet-a-roo!</button>
 
-        </footer>    
+        </footer>
     </form>
     @error('body')
-<span class="text-red-500 font-sm mt-2">{{$message}}</span>    
+        <span class="text-red-500 font-sm mt-2">{{$message}}</span>
     @enderror
 
 </div>

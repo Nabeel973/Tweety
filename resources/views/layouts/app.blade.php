@@ -24,14 +24,29 @@
         <section class="px-8 py-4 mb-6">
             <header class="container mx-auto">
                 <div class="flex item">
-                    <img src="/images/logo.png" alt="Tweety" class="mr-3"> 
+                    <img src="/images/logo.png" alt="Tweety" class="mr-3">
                     <h1 class="font-bold text-xl">Tweety</h1>
                 </div>
             </header>
         </section>
         <section class="px-8 py-6">
             <main class="container mx-auto">
-                @yield('content')
+
+                <div class="lg:flex lg:justify-between">
+
+                    <div class="lg:w-32">
+                        @include('sidebar_links')
+                    </div>
+
+                    <div class="lg:flex-1 lg:mx-10" style="max-width: 700px;">
+                        @yield('content')
+                    </div>
+
+                    <div class="lg:w-1/6 bg-blue-100 rounded-lg p-4">
+                        @include('friends_list')
+                    </div>
+                </div>
+
             </main>
         </section>
     </div>
