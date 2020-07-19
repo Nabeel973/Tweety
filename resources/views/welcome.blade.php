@@ -69,10 +69,10 @@
                 <div class="title m-b-md">
                     Tweety
                 </div>
-        
+
                 <div class="links">
                     @auth
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{route('home')}}">Home</a>
                 @else
                     <a href="{{ route('login') }}">Login</a>
 
@@ -80,7 +80,7 @@
                         <a href="{{ route('register') }}">Register</a>
                     @endif
                 @endauth
-                   
+
                 </div>
             </div>
         </div>
