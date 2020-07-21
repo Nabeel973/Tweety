@@ -22,7 +22,7 @@
                 <a href="{{route('profile.edit',current_user()->name)}}"  class=" rounded-full border border-gray-300 rounded-lg font-bold   py-2 px-2 ">Edit Profile</a>
             @endif--}}
             @can('edit',$user)
-                <a href="{{route('profile.edit',current_user()->name)}}"  class=" rounded-full border border-gray-300 rounded-lg font-bold   py-2 px-2 ">Edit Profile</a>
+                <a href="{{route('profile.edit',current_user()->username)}}"  class=" rounded-full border border-gray-300 rounded-lg font-bold   py-2 px-2 ">Edit Profile</a>
             @endcan
                 @if(current_user()->isNot($user))
                       <form action="/profiles/{{$user->name}}/follow" method="post">

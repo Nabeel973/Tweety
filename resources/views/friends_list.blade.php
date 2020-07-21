@@ -4,9 +4,9 @@
        @foreach(auth()->user()->follows as $user)
             <li class="mb-4">
                 <div >
-                    <a href="{{route('profile',$user->name)}}" class="flex items-center text-sm">
+                    <a href="{{route('profile',$user->username)}}" class="flex items-center text-sm">
                         <img height="40px" width="40px" src="{{$user->avatar()}}" alt="" class="rounded-full mr-2">
-                        {{$user->name}}
+                        {{$user->username}}
                     </a>
                 </div>
             </li>

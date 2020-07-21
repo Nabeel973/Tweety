@@ -30,13 +30,18 @@
         </a>
     </li>
     <li>
-        {{--<a href="{{route('profile',auth()->user()->name )}}" class="font-bold text-lg mb-4 block">
-        --}}    Profile
+        <a href="{{route('profile',auth()->user()->username )}}" class="font-bold text-lg mb-4 block">
+            Profile
         </a>
     </li>
     <li>
         <a href="#" class="font-bold text-lg mb-4 block">
             More
+        </a>
+    </li>
+    <li>
+        <a href="{{route('logout')}}" class="font-bold text-lg mb-4 block">
+            Logout
         </a>
     </li>
 </ul>
