@@ -2,11 +2,21 @@
 @section('content')
     <header class="mb-6 relative ">
         <div class="relative">
-            <img src="/images/Webp.net-resizeimage.png" alt="" class="mb-2 border">
+            @if(file_exists($user->background))
+                <img src="{{$user->background}}" alt="" class="mb-2 border">
+            @else
+                <img src="/images/gray-background-edited.jpg" alt="" class="mb-2 border" style="background-size: cover;">
+            @endif
 
+            @if($user->avatar)
             <img src="{{$user->avatar()}}" alt=""
                  class="rounded-full mr-2 absolute bottom-0 transform  "
                  width="150px" style="transform: translateX(16.5rem) translateY(4.5rem);">
+             @else
+                <img src="/images/default-user.png" alt=""
+                     class="rounded-full mr-2 absolute bottom-0 transform  "
+                     width="150px" style="transform: translateX(16.5rem) translateY(4.5rem);">
+            @endif
         </div>
     </header>
 
@@ -34,14 +44,12 @@
             @endif
         </div>
     </div>
-    <p class="mb-3 text-sm">
-        There are many variations of passages of Lorem Ipsum available,
-        but the majority have suffered alteration in some form, by injected ,
-        or randomised words which don't look even slightly believable.There are many variations of
-        passages of Lorem Ipsum available, but the majority have suffered alteration in some form,
-        by injected humour, or randomised words which don't look even slightly believable.
-    </p>
 
+    @if($user->description)
+        <p class="mb-3 text-sm">{{$user->description}}</p>
+    @else
+        <p class="mb-3 text-sm text-gray-700">Add Description</p>
+    @endif
 
     @include('timeline',[
        'tweets'=> $user->tweets

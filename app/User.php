@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username','name', 'email', 'password','username'
+        'username','name', 'email', 'password','avatar','background','description'
     ];
 
     /**
@@ -60,7 +60,14 @@ class User extends Authenticatable
     //returns different images from pvatar according to email of users
     public function avatar()
     {
-        return "https://i.pravatar.cc/200?u=".$this->email;
+         //return "https://i.pravatar.cc/200?u=".$this->email;
+        return "/images/".$this->avatar;
+
+    }
+    public function background()
+    {
+        return "/images/".$this->background;
+
     }
     public function path($append='')
     {

@@ -8,13 +8,17 @@
         <footer class="flex justify-between">
 
             <div class="flex items-center text-sm">
-            <img src="{{auth()->user()->avatar()}}" alt=""
-                class="rounded-full mr-2" height="40px" width="40px">
+               @if(auth()->user()->avatar)
+                    <img src="{{auth()->user()->avatar()}}" alt=""
+                        class="border rounded-full mr-2" height="40px" width="40px">
+                @else
+                        <img src="/images/default-user.png" alt="" class="border rounded-full mr-2" height="40px" width="40px">
+                 @endif
             </div>
 
             <button type="submit"
             class="bg-blue-400 rounded-lg shadow py-2 px-2">
-            Tweet-a-roo!</button>
+            Publish</button>
 
         </footer>
     </form>

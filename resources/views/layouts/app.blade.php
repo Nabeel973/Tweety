@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,13 +19,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+
 </head>
 <body>
     <div id="app">
         <section class="px-8 py-4 mb-6">
             <header class="container mx-auto">
                 <div class="flex item">
-                    <img src="/images/logo.png" alt="Tweety" class="mr-3">
+                    <img src="/images/logo1.png" alt="Tweety" class="mr-3">
                     <h1 class="font-bold text-xl">Tweety</h1>
                 </div>
             </header>
@@ -42,7 +45,7 @@
                         @yield('content')
                     </div>
 
-                    <div class="lg:w-1/6 bg-blue-100 rounded-lg p-4">
+                    <div class="lg:w-1/6  rounded-lg p-4">
                         @include('friends_list')
                     </div>
                 </div>
