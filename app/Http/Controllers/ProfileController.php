@@ -41,21 +41,31 @@ class ProfileController extends Controller
     }
 
     public function update(User $user,Request $request)
-    {   //dd($request->all());
-        if($request->hasfile('image') || $request->hasfile('backg') )
+    {
+        if(is_null($user->avatar))
+        {
+            if($request->hasfile('image'))
+            {
+                $path=$this->fileUpload($request->file('image'));
+            }
+            else
+            {
+                $path=null;
+            }
+        }
+        elseif(!empty($user->avatar) && $request->hasfile('image'))
         {
             $path=$this->fileUpload($request->file('image'));
-            $backg=$this->fileUpload($request->file('backg'));
-
         }
         else
         {
-            $path=null;
-            $backg=null;
+            $path=$user->avatar;
         }
-        $user->update(['name'=>request('name'),'username'=>request('username'),'email'=>request('email'),'password'=>request('password'),'avatar'=>$path,'background'=>$backg,'description'=>request('description')]);
-       // dd($request->all());
-       return redirect($user->path());
+
+        $user->update(['name'=>request('name'),'username'=>request('username'),'email'=>request('email'),'password'=>request('password'),'avatar'=>$path,/*'background'=>$backg,*/'description'=>request('description')]);
+
+        Session::flash('success', 'You have successfully updated a post!');
+       return redirect($user->path())->with('success', 'Profile updated!');
     }
 
 

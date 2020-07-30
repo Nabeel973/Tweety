@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,9 +22,11 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
 
+
 </head>
 <body>
     <div id="app">
+        @include('messages')
         <section class="px-8 py-4 mb-6">
             <header class="container mx-auto">
                 <div class="flex item">

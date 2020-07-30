@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tweet;
+use Session;
 
 class TweetController extends Controller
 {
@@ -22,6 +23,7 @@ class TweetController extends Controller
               'body'=>$attributes['body'],
 
           ]);
+          Session::flash('success', 'You have successfully updated a post!');
           return redirect()->route('home');
       }
 }
