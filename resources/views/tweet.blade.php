@@ -4,10 +4,10 @@
     <div class="mr-2 flex-shrink-0">
 
         <a href="{{route('profile',$tweet->user->name)}}">
-            @if(file_exists($tweet->user->avatar()))
+            @if($tweet->user->avatar())
                 <img src="{{ $tweet->user->avatar()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
             @else
-                <img src="/images/default-user.png"  alt="" class="rounded-full mr-2" height="40px" width="40px">
+                <img src="{{$tweet->user->default_user()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
             @endif
         </a>
     </div>

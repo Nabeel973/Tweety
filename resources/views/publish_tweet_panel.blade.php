@@ -12,7 +12,7 @@
                     <img src="{{auth()->user()->avatar()}}" alt=""
                         class="border rounded-full mr-2" height="40px" width="40px">
                 @else
-                        <img src="/images/default-user.png" alt="" class="border rounded-full mr-2" height="40px" width="40px">
+                        <img src="{{auth()->user()->default_user()}}" alt="" class="border rounded-full mr-2" height="40px" width="40px">
                  @endif
             </div>
 

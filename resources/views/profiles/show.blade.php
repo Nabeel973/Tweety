@@ -2,10 +2,10 @@
 @section('content')
     <header class="mb-6 relative ">
         <div class="relative">
-            @if(file_exists($user->background))
-                <img src="{{$user->background}}" alt="" class="mb-2 border">
+            @if($user->background)
+                <img src="{{$user->background()}}" alt="" class="mb-2 border">
             @else
-                <img src="/images/gray-background-edited.jpg" alt="" class="mb-2 border" style="background-size: cover;">
+                <img src="{{$user->default_background()}}" alt="" class="mb-2 border" style="background-size: cover;">
             @endif
 
             @if($user->avatar)
@@ -13,7 +13,7 @@
                  class="rounded-full mr-2 absolute bottom-0 transform  "
                  width="150px" style="transform: translateX(16.5rem) translateY(4.5rem);">
              @else
-                <img src="/images/default-user.png" alt=""
+                <img src="{{$user->default_user()}}" alt=""
                      class="rounded-full mr-2 absolute bottom-0 transform  "
                      width="150px" style="transform: translateX(16.5rem) translateY(4.5rem);">
             @endif

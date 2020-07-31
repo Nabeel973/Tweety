@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\File ;
 use App\User;
+use Hash;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -44,28 +46,47 @@ class ProfileController extends Controller
     {
         if(is_null($user->avatar))
         {
-            if($request->hasfile('image'))
+            if($request->hasfile('avatar'))
             {
-                $path=$this->fileUpload($request->file('image'));
+                $path=$this->fileUpload($request->file('avatar'));
             }
             else
             {
                 $path=null;
             }
         }
-        elseif(!empty($user->avatar) && $request->hasfile('image'))
+        elseif(!empty($user->avatar) && $request->hasfile('avatar'))
         {
-            $path=$this->fileUpload($request->file('image'));
+            $path=$this->fileUpload($request->file('avatar'));
         }
         else
         {
             $path=$user->avatar;
         }
+        if(is_null($user->background))
+        {
+            if($request->hasfile('background'))
+            {
+                $background=$this->fileUpload($request->file('background'));
+            }
+            else
+            {
+                $background=null;
+            }
+        }
+        elseif(!empty($user->background) && $request->hasfile('background'))
+        {
+            $background=$this->fileUpload($request->file('background'));
+        }
+        else
+        {
+            $background=$user->background;
+        }
 
-        $user->update(['name'=>request('name'),'username'=>request('username'),'email'=>request('email'),'password'=>request('password'),'avatar'=>$path,/*'background'=>$backg,*/'description'=>request('description')]);
+        $user->update(['name'=>request('name'),'username'=>request('username'),'email'=>request('email'),'password'=> Hash::make(request('password')),'avatar'=>$path,'background'=>$background,'description'=>request('description')]);
 
         Session::flash('success', 'You have successfully updated a post!');
-       return redirect($user->path())->with('success', 'Profile updated!');
+       return redirect($user->path())->with(['message'=>'Profile updated']);
     }
 
 

@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-
-
 @section('content')
 
     <h1 class="text-gray-700 text-2xl font-bold text-center">Edit Profile</h1>
@@ -16,8 +13,8 @@
     <div id="flip" class="p-5 bg-gray-200">Basic Info</div>
     <div id="panel">
         <div class="mb-6">
-            {!! Form::label('image', 'Select profile to upload') !!}
-            {!!Form::file('image')!!}
+            {!! Form::label('avatar', 'Select profile to upload') !!}
+            {!!Form::file('avatar')!!}
         </div>
         <div class="mb-6">
             {!! Form::label('Name') !!}
@@ -50,8 +47,8 @@
     <div id="main" class="p-5 bg-gray-200">Background</div>
     <div id="child">
         <div class="mt-6">
-            {!! Form::label('backg', 'Select background image to upload') !!}
-            {!!Form::file('backg')!!}
+            {!! Form::label('background', 'Select background image to upload') !!}
+            {!!Form::file('background')!!}
         </div>
         <div class="mt-6">
             {!! Form::label('Description') !!}

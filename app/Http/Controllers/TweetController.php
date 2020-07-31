@@ -24,6 +24,6 @@ class TweetController extends Controller
 
           ]);
           Session::flash('success', 'You have successfully updated a post!');
-          return redirect()->route('home');
+          return redirect()->route('home')->with(['message' => 'Tweet Uploaded']);
       }
 }

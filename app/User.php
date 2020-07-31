@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable,Followable;
+    use Notifiable,Followable,Images;
 
 
     /**
@@ -57,18 +57,6 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class)->latest();
     }
 
-    //returns different images from pvatar according to email of users
-    public function avatar()
-    {
-         //return "https://i.pravatar.cc/200?u=".$this->email;
-        return "/images/".$this->avatar;
-
-    }
-    public function background()
-    {
-        return "/images/".$this->background;
-
-    }
     public function path($append='')
     {
         $path=route('profile',$this->username);

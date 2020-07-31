@@ -24,7 +24,7 @@
     <section class="px-8 py-4 mb-6">
         <header class="container mx-auto">
             <div class="flex item">
-                <img src="/images/logo.png" alt="Tweety" class="mr-3">
+                <img src="/images/logo1.png" alt="Tweety" class="mr-3">
                 <h1 class="font-bold text-xl">Tweety</h1>
             </div>
         </header>

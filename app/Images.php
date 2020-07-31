@@ -11,16 +11,20 @@ trait Images
     {
         //return "https://i.pravatar.cc/200?u=".$this->email;
         return "/images/".$this->avatar;
-
-    }
-    public function background()
-    {
-        return "/images/".$this->background;
-
     }
 
     public function default_user()
     {
         return "/images/default-user.png";
+    }
+    public function default_background()
+    {
+        return "/images/gray-background-edited.jpg";
+    }
+
+    public function background()
+    {
+        return "/images/".$this->background;
+
     }
 }
