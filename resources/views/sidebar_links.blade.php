@@ -1,6 +1,6 @@
 <ul>
     <li>
-        <a href="{{route('home')}}" class="font-bold text-lg mb-4 block">
+        <a href="{{route('tweets.index')}}" class="font-bold text-lg mb-4 block">
             Home
         </a>
     </li>

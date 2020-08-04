@@ -52,7 +52,7 @@
         </div>
         <div class="mt-6">
             {!! Form::label('Description') !!}
-            {!! Form::text('description', null, ['class' => 'border border-gray-400 p-2 w-full']) !!}
+            {!! Form::text('description', $user->description, ['class' => 'border border-gray-400 p-2 w-full']) !!}
 
         </div>
     </div>

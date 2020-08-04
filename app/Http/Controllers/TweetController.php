@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tweet;
 use Session;
+use DB;
 
 class TweetController extends Controller
 {
@@ -23,7 +24,15 @@ class TweetController extends Controller
               'body'=>$attributes['body'],
 
           ]);
-          Session::flash('success', 'You have successfully updated a post!');
-          return redirect()->route('home')->with(['message' => 'Tweet Uploaded']);
+          Session::flash('success');
+          return redirect()->route('tweets.index')->with(['message' => 'Tweet Uploaded']);
+      }
+
+      public function destroy(Tweet $tweet)
+      {
+          $tweet->delete();
+          Session::flash('success');
+          return redirect()->route('tweets.index')->with(['message' => 'Tweet Deleted']);
+
       }
 }

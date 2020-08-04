@@ -4,7 +4,7 @@
     <div class="mr-2 flex-shrink-0">
 
         <a href="{{route('profile',$tweet->user->name)}}">
-            @if($tweet->user->avatar())
+            @if($tweet->user->avatar)
                 <img src="{{ $tweet->user->avatar()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
             @else
                 <img src="{{$tweet->user->default_user()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
@@ -17,5 +17,14 @@
              <h5 class="font-bold  mb-4">{{ $tweet->user['name'] }}</h5>
         </a>
         <p class="text-sm ">{{$tweet->body}}.</p>
+        <a>
+            @can('delete',$tweet)
+                <form action="{{ route('tweets.destroy',$tweet->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            @endcan
+        </a>
     </div>
 </div>

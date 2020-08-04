@@ -72,7 +72,7 @@
 
                 <div class="links">
                     @auth
-                    <a href="{{route('home')}}">Home</a>
+                    <a href="{{route('tweets.index')}}">Home</a>
                 @else
                     <a href="{{ route('login') }}">Login</a>
 
