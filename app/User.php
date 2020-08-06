@@ -50,7 +50,7 @@ class User extends Authenticatable
 
         $friends=$this->follows()->pluck('id'); //so that it may return only the followers from the collection
         //adds the tweets of the current user
-        return Tweet::whereIn('user_id',$friends)->orWhere('user_id',$this->id)->latest()->get();
+        return Tweet::whereIn('user_id',$friends)->orWhere('user_id',$this->id)->latest()->paginate(50);
     }
 
     public function tweets()

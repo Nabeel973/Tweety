@@ -2,10 +2,10 @@
 
     <form action="/tweets" method="POST">
         @csrf
-        <textarea name="body" class="w-full" placeholder="What's up doc?"></textarea>
+        <textarea name="body" class="w-full" placeholder="What's up doc?" required></textarea>
         <hr class="my-4">
 
-        <footer class="flex justify-between">
+        <footer class="flex justify-between items-center">
 
             <div class="flex items-center text-sm">
                @if(auth()->user()->avatar)
@@ -17,7 +17,7 @@
             </div>
 
             <button type="submit"
-            class="bg-blue-400 rounded-lg shadow py-2 px-2">
+            class="bg-blue-400 hover:bg-blue-500 rounded-full text-white shadow px-10 text-sm h-10 ">
             Publish</button>
 
         </footer>

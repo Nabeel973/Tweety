@@ -30,7 +30,7 @@ Route::patch('/profiles/{user:username}','ProfileController@update')->name('prof
 Route::post('/profiles/{user}/follow','FollowController@store')->name('follow');
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
-
+Route::get('/explore','ExploreController');
 
 Auth::routes();
 

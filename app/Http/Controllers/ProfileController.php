@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\File ;
 use App\User;
 use Hash;
@@ -31,7 +32,11 @@ class ProfileController extends Controller
 
     public function show(User $user)
     {
-            return view('profiles.show', compact('user'));
+            return view('profiles.show',[
+                'user'=>$user,
+                'tweets'=> $user->tweets()->paginate(50),
+
+            ]);
     }
 
     public function edit(User $user)
@@ -42,8 +47,11 @@ class ProfileController extends Controller
         return view('profiles.edit',compact('user'));
     }
 
-    public function update(User $user,Request $request)
+
+        public function update(User $user,Request $request)
     {
+
+
         if(is_null($user->avatar))
         {
             if($request->hasfile('avatar'))
@@ -84,6 +92,7 @@ class ProfileController extends Controller
         }
 
         $user->update(['name'=>request('name'),'username'=>request('username'),'email'=>request('email'),'password'=> Hash::make(request('password')),'avatar'=>$path,'background'=>$background,'description'=>request('description')]);
+
 
         Session::flash('success', 'You have successfully updated a post!');
        return redirect($user->path())->with(['message'=>'Profile updated']);
