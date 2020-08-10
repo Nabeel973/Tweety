@@ -1,17 +1,13 @@
 
 <div class="flex p-4 border-b border-b-gray-400 content-around">
     <div class="mr-2 flex-shrink-0 w-1/8">
-        <a href="{{route('profile',$tweet->user->name)}}">
-            @if($tweet->user->avatar)
-                <img src="{{ $tweet->user->avatar()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
-            @else
-                <img src="{{$tweet->user->default_user()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
-            @endif
+        <a href="{{route('profile',$tweet->user->username)}}">
+            <img src="{{ $tweet->user->avatar()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
         </a>
     </div>
 
     <div class="lg:w-11/12">
-        <a href="{{route('profile',$tweet->user->name)}}">
+        <a href="{{route('profile',$tweet->user->username)}}">
              <h5 class="font-bold  mb-4">{{ $tweet->user['name'] }}</h5>
         </a>
         <p class="text-sm ">{{$tweet->body}}.</p>
@@ -28,7 +24,7 @@
                             </g>
                         </g>
                     </svg>
-                    <button  class="{{$tweet->isLikedBy(current_user()) ? 'text-blue-500':'text-gray-500'}}">{{$tweet->likes ?:0}}</button>
+                    <button  class="{{$tweet->isLikedBy(current_user()) ? 'text-blue-500':'text-gray-500'}} text-sm" style="outline: none;">{{$tweet->likes ?:0}}</button>
                 </div>
             </form>
 
@@ -44,7 +40,7 @@
                             </g>
                         </g>
                     </svg>
-                    <button type="submit" class="text-xs text-gray-500">{{$tweet->dislikes ?:0}}</button>
+                    <button type="submit" class="text-xs text-gray-500" style="outline: none;">{{$tweet->dislikes ?:0}}</button>
                 </div>
             </form>
         </div>
@@ -67,7 +63,7 @@
                 <form action="{{ route('tweets.destroy',$tweet->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">
+                    <button type="submit" style="outline: none;">
                         <svg viewBox="0 0 20 20" class="text-gray-500 hover:text-red-500 w-3">
                             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g class="fill-current">

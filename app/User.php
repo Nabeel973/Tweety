@@ -11,7 +11,6 @@ class User extends Authenticatable
 {
     use Notifiable,Followable,Images;
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -49,15 +48,16 @@ class User extends Authenticatable
         //adds the tweets of the current user
         return Tweet::whereIn('user_id',$friends)->orWhere('user_id',$this->id)->withLikes()->latest()->paginate(50);
     }
+
     /**
      * function for showing timeline
      *
      */
-
     public function tweets()
     {
         return $this->hasMany(Tweet::class)->latest();
     }
+
     /**
      * function for showing timeline
      *

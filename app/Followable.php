@@ -1,35 +1,48 @@
 <?php
 
-
 namespace App;
-
 
 trait Followable
 {
+
+    /**
+     * for the user we are following
+     */
     public function following(User $user)
     {
         return $this->follows()->where('following_user_id',$user->id)->exists();
     }
 
-    //save the user we are following
+    /**
+     *saves the user we are following
+     */
     public function follow(User $user)
     {
         return $this->follows()->save($user);
     }
 
+    /**
+     *unfollow the user we are following
+     */
     public function unfollow(User $user)
     {
         return $this->follows()->detach($user);
     }
 
-    //a user(1) follows a user(3)
+    /**
+     *A user follows the other user
+     */
     public function follows()
     {
         return $this->belongsToMany(User::class,'follows','user_id','following_user_id');
     }
+
+    /**
+     *returns the route according to the name
+     */
     public function getRouteKeyName()
     {
-        return 'name' ; // the url will be  profiles/nabeel
+        return 'name' ;
     }
 
 }

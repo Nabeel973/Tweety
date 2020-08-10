@@ -6,25 +6,36 @@ namespace App;
 
 trait Images
 {
-//returns different images from pvatar according to email of users
+    /**
+     *returns avatars according to user's email
+     */
     public function avatar()
     {
-        //return "https://i.pravatar.cc/200?u=".$this->email;
-        return "/images/".$this->avatar;
+        if($this->avatar == null)
+        {
+            return "/images/default-user.png";
+        }
+        else
+        {
+            return "/images/".$this->avatar;
+        }
     }
 
-    public function default_user()
-    {
-        return "/images/default-user.png";
-    }
-    public function default_background()
-    {
-        return "/images/gray-background-edited.jpg";
-    }
+    /**
+     *returns backgrounds according to user's email
+     */
 
     public function background()
     {
-        return "/images/".$this->background;
-
+        if($this->background == null)
+        {
+            return "/images/gray-background-edited.jpg";
+        }
+        else
+        {
+            return "/images/".$this->background;
+        }
     }
+
+
 }

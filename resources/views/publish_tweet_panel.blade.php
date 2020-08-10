@@ -2,24 +2,19 @@
 
     <form action="/tweets" method="POST">
         @csrf
-        <textarea name="body" class="w-full" placeholder="What's up doc?" required></textarea>
+        <textarea name="body" class="w-full" placeholder="What's up doc?" required style="outline: none;"></textarea>
         <hr class="my-4">
 
         <footer class="flex justify-between items-center">
 
             <div class="flex items-center text-sm">
-               @if(auth()->user()->avatar)
-                    <img src="{{auth()->user()->avatar()}}" alt=""
-                        class="border rounded-full mr-2" height="40px" width="40px">
-                @else
-                        <img src="{{auth()->user()->default_user()}}" alt="" class="border rounded-full mr-2" height="40px" width="40px">
-                 @endif
+                <img src="{{auth()->user()->avatar()}}" alt=""
+                     class="border rounded-full mr-2" height="40px" width="40px">
             </div>
 
             <button type="submit"
-            class="bg-blue-400 hover:bg-blue-500 rounded-full text-white shadow px-10 text-sm h-10 ">
+            class="bg-blue-400 hover:bg-blue-500 rounded-full text-white shadow px-10 text-sm h-10 " style="outline: none;">
             Publish</button>
-
         </footer>
     </form>
     @error('body')

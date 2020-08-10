@@ -2,21 +2,11 @@
 @section('content')
     <header class="mb-6 relative ">
         <div class="relative">
-            @if($user->background)
-                <img src="{{$user->background()}}" alt="" class="mb-2 border">
-            @else
-                <img src="{{$user->default_background()}}" alt="" class="mb-2 border" style="background-size: cover;">
-            @endif
+            <img src="{{$user->background()}}" alt="" class="mb-2 border">
 
-            @if($user->avatar)
             <img src="{{$user->avatar()}}" alt=""
                  class="rounded-full mr-2 absolute bottom-0 transform  "
                  width="150px" style="transform: translateX(16.5rem) translateY(4.5rem);">
-             @else
-                <img src="{{$user->default_user()}}" alt=""
-                     class="rounded-full mr-2 absolute bottom-0 transform  "
-                     width="150px" style="transform: translateX(16.5rem) translateY(4.5rem);">
-            @endif
         </div>
     </header>
 
@@ -26,19 +16,15 @@
             <p class="text-sm">Joined {{$user->created_at->diffForHumans()}}</p>
         </div>
 
-
         <div class="flex justify-between">
-           {{-- @if(current_user()->is($user))
-                <a href="{{route('profile.edit',current_user()->name)}}"  class=" rounded-full border border-gray-300 rounded-lg font-bold   py-2 px-2 ">Edit Profile</a>
-            @endif--}}
             @can('edit',$user)
                 <a href="{{route('profile.edit',current_user()->username)}}"  class=" rounded-full border border-gray-300 rounded-lg font-bold   py-2 px-2 ">Edit Profile</a>
             @endcan
                 @if(current_user()->isNot($user))
                       <form action="/profiles/{{$user->name}}/follow" method="post">
                 @csrf
-                <button type="submit" class=" rounded-full bg-blue-500 text-white rounded-lg  py-2 px-2 "
-                >{{current_user()->following($user) ? 'Unfollow Me': 'Follow Me' }}</button>
+                <button type="submit" class=" bg-blue-400 hover:bg-blue-500 rounded-full text-white shadow px-8 text-sm h-10"
+                        style="outline: none;">{{current_user()->following($user) ? 'Unfollow Me': 'Follow Me' }}</button>
 
             </form>
             @endif
