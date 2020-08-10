@@ -1,8 +1,6 @@
 
-<div class="flex p-4 border-b border-b-gray-400">
-
-    <div class="mr-2 flex-shrink-0">
-
+<div class="flex p-4 border-b border-b-gray-400 content-around">
+    <div class="mr-2 flex-shrink-0 w-1/8">
         <a href="{{route('profile',$tweet->user->name)}}">
             @if($tweet->user->avatar)
                 <img src="{{ $tweet->user->avatar()}}"  alt="" class="rounded-full mr-2" height="40px" width="40px">
@@ -12,14 +10,14 @@
         </a>
     </div>
 
-    <div>
+    <div class="lg:w-11/12">
         <a href="{{route('profile',$tweet->user->name)}}">
              <h5 class="font-bold  mb-4">{{ $tweet->user['name'] }}</h5>
         </a>
         <p class="text-sm ">{{$tweet->body}}.</p>
 
+        {{--likes--}}
         <div class="flex items-center">
-            {{--likes--}}
             <form method="POST" action="/tweets/{{$tweet->id}}/like">
                 @csrf
                 <div class="flex">
@@ -32,9 +30,9 @@
                     </svg>
                     <button  class="{{$tweet->isLikedBy(current_user()) ? 'text-blue-500':'text-gray-500'}}">{{$tweet->likes ?:0}}</button>
                 </div>
-
             </form>
-                {{--Dislike--}}
+
+            {{--Dislike--}}
             <form action="/tweets/{{$tweet->id}}/like" method="POST">
                 @csrf
                 @method('DELETE')
@@ -48,19 +46,41 @@
                     </svg>
                     <button type="submit" class="text-xs text-gray-500">{{$tweet->dislikes ?:0}}</button>
                 </div>
-
             </form>
-            <div class="ml-6 ">
-                @can('delete',$tweet)
-                    <form action="{{ route('tweets.destroy',$tweet->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-blue-700 hover:text-red-500">Delete</button>
-                    </form>
-                @endcan
-            </div>
+        </div>
+    </div>
+
+    @can('edit-delete',$tweet)
+        <div class="w-1/12 flex justify-between ">
+       <div class="mt-1">
+
+           <svg viewBox="0 0 20 20" version="1.1" class="text-gray-500 hover:text-blue-500 w-3">
+               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                   <g class="fill-current">
+                       <path d="M12.2928932,3.70710678 L0,16 L0,20 L4,20 L16.2928932,7.70710678 L12.2928932,3.70710678 Z M13.7071068,2.29289322 L16,0 L20,4 L17.7071068,6.29289322 L13.7071068,2.29289322 Z" id="Combined-Shape"></path>
+                   </g>
+               </g>
+           </svg>
+       </div>
+        <div>
+
+                <form action="{{ route('tweets.destroy',$tweet->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">
+                        <svg viewBox="0 0 20 20" class="text-gray-500 hover:text-red-500 w-3">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g class="fill-current">
+                                    <polygon id="Combined-Shape" points="10 8.58578644 2.92893219 1.51471863 1.51471863 2.92893219 8.58578644 10 1.51471863 17.0710678 2.92893219 18.4852814 10 11.4142136 17.0710678 18.4852814 18.4852814 17.0710678 11.4142136 10 18.4852814 2.92893219 17.0710678 1.51471863 10 8.58578644"></polygon>
+                                </g>
+                            </g>
+                        </svg>
+                    </button>
+                </form>
+
         </div>
 
-
     </div>
+    @endcan
 </div>
+

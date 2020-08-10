@@ -39,24 +39,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    /**
+     * function for showing timeline
+     *
+     */
     public function timeLine()
     {
-        //return Tweet::where('user_id',$this->id)->latest()->get(); shows only timeline for the current login user
-
-        //show user's tweet
-        //also show the tweets of the user he/she is following
-        //sort them in descending order
-
         $friends=$this->follows()->pluck('id'); //so that it may return only the followers from the collection
         //adds the tweets of the current user
         return Tweet::whereIn('user_id',$friends)->orWhere('user_id',$this->id)->withLikes()->latest()->paginate(50);
     }
+    /**
+     * function for showing timeline
+     *
+     */
 
     public function tweets()
     {
         return $this->hasMany(Tweet::class)->latest();
     }
+    /**
+     * function for showing timeline
+     *
+     */
 
     public function likes()
     {

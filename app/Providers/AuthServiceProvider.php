@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('delete', function (User $user , Tweet $tweet){
+        Gate::define('edit-delete', function (User $user , Tweet $tweet){
            return  $tweet->user->is($user);
         });
     }

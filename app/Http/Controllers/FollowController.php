@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class FollowController extends Controller
 {
+    /**
+     * function to  follow/unfollow other user
+     *
+     * @param  \App\User $user
+     * @return back
+     */
     public function store(User $user)
     {
         if(auth()->user()->following($user))
@@ -16,7 +22,6 @@ class FollowController extends Controller
         else{
             auth()->user()->follow($user);
         }
-
 
         return back();
     }

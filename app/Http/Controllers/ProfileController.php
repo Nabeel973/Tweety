@@ -30,28 +30,43 @@ class ProfileController extends Controller
         return $path;
     }
 
+    /**
+     * function for showing user profile
+     *
+     * @param  \App\User $user
+     * @return \Illuminate\View\View
+     */
+
     public function show(User $user)
     {
             return view('profiles.show',[
                 'user'=>$user,
                 'tweets'=> $user->tweets()->withLikes()->paginate(50),
-
             ]);
     }
 
+    /**
+     * function for editing user profile
+     *
+     * @param  \App\User $user
+     * @return \Illuminate\View\View
+     */
+
     public function edit(User $user)
     {
-      /*  if(current_user()->isNot($user)){    abort(404);}*/
-       // $this->authorize('edit',$user);
-
         return view('profiles.edit',compact('user'));
     }
 
+    /**
+     * function for showing user profile
+     *
+     * @param  \App\User $user
+     * @param  \App\Http\Requests\Request $request
+     * @return \Illuminate\View\View
+     */
 
-        public function update(User $user,Request $request)
+    public function update(User $user,Request $request)
     {
-
-
         if(is_null($user->avatar))
         {
             if($request->hasfile('avatar'))
