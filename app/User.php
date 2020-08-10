@@ -46,16 +46,21 @@ class User extends Authenticatable
 
         //show user's tweet
         //also show the tweets of the user he/she is following
-        //sort them in descrnding order
+        //sort them in descending order
 
         $friends=$this->follows()->pluck('id'); //so that it may return only the followers from the collection
         //adds the tweets of the current user
-        return Tweet::whereIn('user_id',$friends)->orWhere('user_id',$this->id)->latest()->paginate(50);
+        return Tweet::whereIn('user_id',$friends)->orWhere('user_id',$this->id)->withLikes()->latest()->paginate(50);
     }
 
     public function tweets()
     {
         return $this->hasMany(Tweet::class)->latest();
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 
     public function path($append='')

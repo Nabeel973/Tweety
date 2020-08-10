@@ -30,6 +30,9 @@ Route::patch('/profiles/{user:username}','ProfileController@update')->name('prof
 Route::post('/profiles/{user}/follow','FollowController@store')->name('follow');
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
+Route::post('/tweets/{tweet}/like','TweetLikesController@store');
+Route::delete('/tweets/{tweet}/like','TweetLikesController@destroy');
+
 Route::get('/explore','ExploreController');
 
 Auth::routes();

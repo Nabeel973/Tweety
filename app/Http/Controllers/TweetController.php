@@ -12,7 +12,7 @@ class TweetController extends Controller
     public function index()
     {
         return view('tweets.index',[
-            'tweets'=> auth()->user()->timeLine()
+            'tweets'=> auth()->user()->timeLine(),
         ]);
     }
     public function store()
@@ -22,7 +22,6 @@ class TweetController extends Controller
           Tweet::create([
               'user_id' => auth()->id(),
               'body'=>$attributes['body'],
-
           ]);
           Session::flash('success');
           return redirect()->route('tweets.index')->with(['message' => 'Tweet Uploaded']);
