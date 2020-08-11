@@ -31,7 +31,6 @@ class User extends FormRequest
             'password'=>'required|min:10|string|confirmed',
             'avatar'=>'file,|mimes:jpeg,png,gif,jpg|max:2048',
             'background'=>'file,|mimes:jpeg,png,gif,jpg|max:2048',
-            'description'=>'string|max:255'
         ];
     }
 }

@@ -18,9 +18,6 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function() {
-   /* Route::get('/tweets', 'TweetController@index')->name('home');
-    Route::post('/tweets', 'TweetController@store');
-    Route::post('/tweets/{id}','TweetController@delete');*/
     Route::resource('tweets', 'TweetController', ['except' => ['create','show','edit','update']]);
 });
 Route::get('/profiles/{user:username}','ProfileController@show')->name('profile');
