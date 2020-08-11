@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -24,6 +23,7 @@ trait Likeable
      * function for showing likes of auth user
      *
      * @param  \App\User $user
+     * @return bool
      */
 
     public function isLikedBy(User $user)
@@ -38,6 +38,7 @@ trait Likeable
      * function for showing dislikes of auth user
      *
      * @param  \App\User $user
+     * @return bool
      */
 
     public function isDislikedBy(User $user)
@@ -80,6 +81,4 @@ trait Likeable
             ]
         );
     }
-
-
 }

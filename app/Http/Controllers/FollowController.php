@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FollowController extends Controller
 {
     /**
-     * function to  follow/unfollow other user
+     * function to store follow/unfollow other user
      *
      * @param  \App\User $user
      * @return back
