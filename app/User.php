@@ -58,6 +58,7 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class)->latest();
     }
 
+
     /**
      * function for showing timeline
      *

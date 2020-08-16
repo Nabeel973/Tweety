@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function() {
-    Route::resource('tweets', 'TweetController', ['except' => ['create','show','edit','update']]);
+    Route::resource('tweets', 'TweetController', ['except' => ['create','show']]);
 });
 Route::get('/profiles/{user:username}','ProfileController@show')->name('profile');
 Route::get('/profiles/{user:username}/edit','ProfileController@edit')->name('profile.edit')->middleware('can:edit,user');

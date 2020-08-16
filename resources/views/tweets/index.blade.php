@@ -5,6 +5,5 @@
         @include('publish_tweet_panel')
         @include('timeline')
 
-
     </div>
 @endsection

@@ -34,7 +34,10 @@
     @if($user->description)
         <p class="mb-3 text-sm">{{$user->description}}</p>
     @else
-        <p class="mb-3 text-sm text-gray-700">Add Description</p>
+        @can('edit',$user)
+            <p class="mb-3 text-sm text-gray-700">Add Description</p>
+        @endcan
+
     @endif
 
     @include('timeline',[

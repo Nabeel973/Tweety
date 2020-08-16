@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 use Validator;
 use Illuminate\Http\File ;
 use App\User;
@@ -15,7 +17,7 @@ class ProfileController extends Controller
      * function for storing image
      *
      * @param  $data
-     * @return $path
+     * @return string $path
      */
 
     protected function fileUpload($data)
@@ -33,8 +35,8 @@ class ProfileController extends Controller
     /**
      * function for showing user profile
      *
-     * @param \App\User $user
-     * @return \Illuminate\View\View
+     * @param User $user
+     * @return View
      */
 
     public function show(User $user)
@@ -48,8 +50,8 @@ class ProfileController extends Controller
     /**
      * function for editing user profile
      *
-     * @param \App\User $user
-     * @return \Illuminate\View\View
+     * @param User $user
+     * @return View
      */
 
     public function edit(User $user)
@@ -60,9 +62,10 @@ class ProfileController extends Controller
     /**
      * function for showing user profile
      *
-     * @param \App\User $user
-     * @param \App\Http\Requests\Request $request
-     * @return \Illuminate\View\View
+     * @param User $user
+     * @param Request $request
+     * @return View
+     * @throws ValidationException
      */
 
     public function update(User $user, Request $request)
@@ -104,5 +107,5 @@ class ProfileController extends Controller
         Session::flash('success', 'You have successfully updated a post!');
         return redirect($user->path())->with(['message' => 'Profile updated']);
     }
-    
+
 }
